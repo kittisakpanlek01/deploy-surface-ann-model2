@@ -39,9 +39,8 @@ if input_mode == "กรอกข้อมูลเอง":
                     "OPCCO": st.selectbox("OPCCO", options=["0", "10", "21", "31", "41", "51", "66"]),
                     "LCBXON": st.selectbox("LCBXON", options=["USED CB", "BYPASS CB"]),
                     "Product": st.selectbox("Product", options=["ColdRoll", "CutSheet", "Other", "PO/POx", "Stock"]),
-                    "ENDUSE": st.selectbox("ENDUSE", options=["PNX", "SDX", "FXX", "DGX", "ADO", "ADH", "K1I", "GXX", "RST"]
-                    "PASSNR": st.selectbox("PASSNR", options=["5", "7", "9"]),
-                }
+                    "ENDUSE": st.selectbox("ENDUSE", options=["PNX", "SDX", "FXX", "DGX", "ADO", "ADH", "K1I", "GXX", "RST"]),
+                    "PASSNR": st.selectbox("PASSNR", options=["5", "7", "9"])}
 
     df_input = pd.DataFrame([input_data])
     predict_btn = st.button("ทำนายผล")
