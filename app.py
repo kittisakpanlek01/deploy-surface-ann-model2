@@ -25,23 +25,23 @@ if input_mode == "กรอกข้อมูลเอง":
     # for col in cat_cols:
     #     input_data[col] = st.text_input(col, value="")
     input_data = {
-                    "HNSPDI": st.number_input("HNSPDI", value=4.0),
-                    "WNSPDI": st.number_input("WNSPDI", value=1219.0),
-                    "RMEXTG": st.number_input("RMEXTG", value=38.0),
-                    "SLFUTI": st.number_input("SLFUTI", value=3.5),
-                    "LSP_Body": st.number_input("LSP_Body", value=1110.0),
+                    "HNSPDI": st.number_input("THICKNESS", value=4.0),
+                    "WNSPDI": st.number_input("WIDTH", value=1219.0),
+                    "RMEXTG": st.number_input("BAR_THICK", value=38.0),
+                    "SLFUTI": st.number_input("TIME_IN_FUR", value=3.5),
+                    "LSP_Body": st.number_input("LSP_Body", value=1100.0),
                     "Entry_Body": st.number_input("Entry_Body", value=1040.0),
-                    "XVPTF8": st.number_input("Speed", value=8.0),
+                    "XVPTF8": st.number_input("SPEED", value=8.0),
                     "FT_HEAD": st.number_input("FT_HEAD", value=860.0),
                     "CT_HEAD": st.number_input("CT_HEAD", value=540.0),
-                    "FTGM": st.number_input("FTGM", value=9000),
+                    "FTGM": st.number_input("FM_FORCE", value=9000),
                     "HDFBTH": st.number_input("HDFBTH", value=18.0),
                     "QUASTR": st.selectbox("QUASTR", options=["C032", "C032RBB", "CG145", "CS0810", "CN1410", "CR1512"]),
                     "OPCCO": st.selectbox("OPCCO", options=["0", "10", "21", "31", "41", "51", "66"]),
                     "LCBXON": st.selectbox("LCBXON", options=["USED CB", "BYPASS CB"]),
-                    "Product": st.selectbox("Product", options=["ColdRoll", "CutSheet", "Other", "PO/POx", "Stock"]),
+                    "Product": st.selectbox("PRODUCT", options=["ColdRoll", "CutSheet", "Other", "PO/POx", "Stock"]),
                     "ENDUSE": st.selectbox("ENDUSE", options=["PNX", "SDX", "FXX", "DGX", "ADO", "ADH", "K1I", "GXX", "RST"]),
-                    "PASSNR": st.selectbox("PASSNR", options=["5", "7", "9"])}
+                    "PASSNR": st.selectbox("RM_PASS", options=["5", "7", "9"])}
 
     df_input = pd.DataFrame([input_data])
     predict_btn = st.button("ทำนายผล")
@@ -85,7 +85,9 @@ else:
                         df["Predicted_Defect"] = pred_labels
 
                         st.success("ทำนายผลสำเร็จ ✅")
-                        st.write("ผลการทำนาย", df[["Predicted_Defect"]])
+                        # st.write("ผลการทำนาย", df[["Predicted_Defect"]])
+                        st.write("ผลการทำนาย", df[num_cols + cat_cols + ["Predicted_Defect"]])
+
 
                         # Download result
                         result_file = "prediction_result.xlsx"
