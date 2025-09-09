@@ -3,4 +3,5 @@ tensorflow
 streamlit
 scikit-learn 
 pandas 
-joblib 
+joblib
+openpyxl
